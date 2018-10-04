@@ -12,7 +12,7 @@ namespace MVCDemoF18.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return Redirect("Demo");
         }
 
         public IActionResult About()

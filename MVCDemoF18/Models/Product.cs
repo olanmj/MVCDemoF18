@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace MVCDemoF18.Models
 {
-    class Product
+    public class Product
     {
         public int ProductID { get; set; }
         public string Name { get; set; }

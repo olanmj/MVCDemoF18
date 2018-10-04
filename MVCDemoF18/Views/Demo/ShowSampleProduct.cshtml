@@ -1,0 +1,17 @@
+﻿@model MVCDemoF18.Models.Product
+
+@{
+    ViewData["Title"] = "ShowSampleProduct";
+}
+
+<h2>Sample Product</h2>
+
+
+<div class="box1">Product ID: @Model.ProductID</div>
+<div>Product name: @Model.Name</div>
+<div>Product Description: @Model.Description</div>
+<div>Price: @Model.Price.ToString("C")</div>
+<div>Category: @Model.Category</div>
+<div>Amount Due: @Model.AmountDue.ToString("c")</div>
+
+

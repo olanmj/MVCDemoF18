@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "ShowList";
+}
+
+<h2>Show List of Words</h2>
+
+<ol>
+
+
+    @for (var i = 0; i < (int)ViewData["Count"]; i++)
+    {
+        <li>@ViewData["Word"]</li>
+    }
+</ol>
+
