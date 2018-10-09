@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using WaffleGenerator;
 
@@ -18,7 +19,7 @@ namespace MVCDemoF18.Controllers
         public IActionResult Waffler()
         {
             var waffle = WaffleEngine.Html(2, true, false);
-            return View(waffle);
+            return View(new HtmlString(waffle));
         }
     }
 }

@@ -40,3 +40,8 @@ body {
     border: 1px solid red;
     background-color: gray;
 }
+
+.padded {
+    padding: 20px;
+    font-weight: bold;
+}
