@@ -17,6 +17,7 @@
         <th>Description</th>
         <th>Category</th>
         <th>Price</th>
+        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -26,7 +27,15 @@
         <td>@item.Description</td>
         <td>@item.Category</td>
         <td>@item.Price</td>
+        <td>
+            <form class="form-inline">
+                <button asp-action="Buy" asp-route-id="@item.ProductID" class="btn btn-sm">Buy Now</button>
+                <input type="number" name="quantity" placeholder="Quantity" class="form-control" />
+</form>
+        </td>
     </tr>
     }
 </table>
+
+<a asp-action="AddProduct" class="btn btn-info">Add a Products</a>
 
