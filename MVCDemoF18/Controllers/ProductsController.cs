@@ -37,10 +37,14 @@ namespace MVCDemoF18.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product p)
         {
-            // add p to products list 
-            p.ProductID = products[products.Count - 1].ProductID + 1;
-            products.Add(p);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                // add p to products list 
+                p.ProductID = products[products.Count - 1].ProductID + 1;
+                products.Add(p);
+                return RedirectToAction("Index");
+            }
+            return View(p);
         }
 
         public IActionResult Buy(int id, int quantity)

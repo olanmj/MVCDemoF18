@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using MVCDemoF18.Models;
 
 namespace MVCDemoF18
 {
@@ -32,6 +34,9 @@ namespace MVCDemoF18
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<ProductContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
