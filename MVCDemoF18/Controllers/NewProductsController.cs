@@ -148,5 +148,15 @@ namespace MVCDemoF18.Controllers
         {
             return _context.Product.Any(e => e.ProductID == id);
         }
+
+        private static Random r = new Random();
+        public IActionResult RandomProduct()
+        {
+            
+            int count = _context.Product.Count();
+            int position = r.Next(count);
+            Product p = _context.Product.AsEnumerable().ElementAt(position);
+            return View("Details", p);
+        }
     }
 }
