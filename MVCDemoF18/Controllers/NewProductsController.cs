@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MVCDemoF18.Models;
 
 namespace MVCDemoF18.Controllers
@@ -13,9 +14,10 @@ namespace MVCDemoF18.Controllers
     {
         private readonly ProductContext _context;
 
-        public NewProductsController(ProductContext context)
+        public NewProductsController(ProductContext context, IConfiguration  config)
         {
             _context = context;
+            var key = config.GetValue<string>("APIKey");
         }
 
         // GET: NewProducts
@@ -148,5 +150,7 @@ namespace MVCDemoF18.Controllers
         {
             return _context.Product.Any(e => e.ProductID == id);
         }
+
+       
     }
 }
