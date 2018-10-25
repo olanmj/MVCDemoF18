@@ -16,11 +16,11 @@ namespace MVCDemoF18.Controllers
     public class NewProductsController : Controller
     {
         private readonly ProductContext _context;
-        private static string apiKey = "5b569a19";
+        private string apiKey;
         public NewProductsController(ProductContext context, IConfiguration  config)
         {
             _context = context;
-            var key = config.GetValue<string>("APIKey");
+            apiKey = config.GetValue<string>("APIKey");
         }
 
         // GET: NewProducts
