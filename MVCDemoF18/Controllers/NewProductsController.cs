@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MVCDemoF18.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MVCDemoF18.Controllers
 {
     public class NewProductsController : Controller
     {
         private readonly ProductContext _context;
-
+        private static string apiKey = "5b569a19";
         public NewProductsController(ProductContext context, IConfiguration  config)
         {
             _context = context;
@@ -151,6 +154,28 @@ namespace MVCDemoF18.Controllers
             return _context.Product.Any(e => e.ProductID == id);
         }
 
-       
+        public async Task<IActionResult> GetMovie(string title)
+        {
+            HttpClient client = new HttpClient();
+            string url = $"http://www.omdbapi.com/?apikey={apiKey}&t={title}";
+            var response = await client.GetAsync(url);
+            var data = await response.Content.ReadAsStringAsync();
+            var json = JsonConvert.DeserializeObject(data).ToString();
+            dynamic omdbMovie = JObject.Parse(json);
+            ViewData["Json"] = json;
+            var movieProduct = new Product
+            {
+                ProductID = 123,
+                Name = omdbMovie["Title"],
+                Category = omdbMovie["Genre"],
+                Description = omdbMovie["Actors"],
+                Price = 10m,
+                Quantity = 5
+            };
+            ViewData["Poster"] = omdbMovie["Poster"];
+            return View("Details", movieProduct);
+
+        }
+
     }
 }

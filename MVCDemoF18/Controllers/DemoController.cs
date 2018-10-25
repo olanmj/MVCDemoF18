@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCDemoF18.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MVCDemoF18.Controllers
 {
     public class DemoController : Controller
     {
+       
         public IActionResult Index()
         {
             string greeting = "Hello from the Index method";
@@ -48,5 +52,7 @@ namespace MVCDemoF18.Controllers
             ViewData["Count"] = id;
             return View();
         }
+
+        
     }
 }

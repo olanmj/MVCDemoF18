@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCDemoF18.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MVCDemoF18.Controllers
 {
     public class ProductsController : Controller
     {
+        private static string apiKey = "5b569a19";
         private static List<Product> products = new List<Product>();
 
         public IActionResult Index()
@@ -53,5 +57,6 @@ namespace MVCDemoF18.Controllers
             prod.Quantity = quantity;
             return View(prod);
         }
+
     }
 }
