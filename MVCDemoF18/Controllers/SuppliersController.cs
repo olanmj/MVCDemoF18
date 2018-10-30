@@ -21,7 +21,7 @@ namespace MVCDemoF18.Controllers
         // GET: Suppliers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Supplier.ToListAsync());
+            return View(await _context.Supplier.Include(s => s.Product).ToListAsync());
         }
 
         // GET: Suppliers/Details/5

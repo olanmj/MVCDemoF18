@@ -14,5 +14,7 @@ namespace MVCDemoF18.Models
         public string Location { get; set; }
         // For demo only, not a production ready model
         public int ProductID { get; set; }
+        // Navigation property
+        public Product Product { get; set; }
     }
 }
